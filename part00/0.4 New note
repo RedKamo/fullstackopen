@@ -1,0 +1,60 @@
+---
+title New Note
+
+browser -> server: HTTP GET https://studies.cs.helsinki.fi/exampleapp/notes
+server --> browser:  main.css
+note over browser:
+load default data.json
+and main.css
+end note
+note over browser:
+USER:
+- enter note in form input
+- click on send text through form button
+end note
+
+browser -> server: HTTP POST https://studies.cs.helsinki.fi/exampleapp/new_note
+note over browser
+code 302
+:method: POST
+:path: /exampleapp/new_note
+end note
+server --> browser : HTML CODE
+browser -> server: HTTP GET https://studies.cs.helsinki.fi/exampleapp/notes
+note over server :
+code 304
+:method: GET
+:path: /exampleapp/notes
+end note
+
+server --> browser : HTML Notes component
+
+browser->server: HTTP GET https://studies.cs.helsinki.fi/exampleapp/main.css
+note over server
+code 304
+:method: GET
+:path: /exampleapp/main.css
+end note
+server -->browser: main.css
+browser->server: HTTP GET https://studies.cs.helsinki.fi/exampleapp/main.js
+note over server
+code 304
+:method: GET
+:path: /exampleapp/main.js
+
+end note
+server -->browser: main.js
+
+note over browser:
+Executing js-code
+Requests JSON data and console.log([{...new note added}])
+end note
+browser -> server: https://studies.cs.helsinki.fi/exampleapp/data.json
+note over server:
+Return of data with
+new note added
+end note
+server --> browser: [{"content": 'new note create', "date":"2022-10-11T18:46:03.864Z"}]
+note over browser:
+Show new note
+in the list (UI)
