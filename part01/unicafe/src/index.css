@@ -56,6 +56,17 @@ button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
 
+.emojis {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  gap: 0.5em;
+}
+
+.total {
+  color: #646cff;
+}
+
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;
