@@ -4,27 +4,30 @@ import Total from "./components/Total";
 import "./App.css";
 
 function App() {
-  const course = "Half Stack application development";
-  const content = [
-    {
-      title: "Fundamentals of React",
-      exercises: 10,
-    },
-    {
-      title: "Using props to pass data",
-      exercises: 7,
-    },
-    {
-      title: "State of a component",
-      exercises: 14,
-    },
-  ];
+  const course = {
+    name: "Half Stack application development",
+    parts: [
+      {
+        title: "Fundamentals of React",
+        exercises: 10,
+      },
+      {
+        title: "Using props to pass data",
+        exercises: 7,
+      },
+      {
+        title: "State of a component",
+        exercises: 14,
+      },
+    ],
+  };
+  console.log(course);
 
   return (
     <div>
-      <Header title={course} />
-      <Content content={content} />
-      <Total content={content} />
+      <Header {...course} />
+      <Content course={course} />
+      <Total course={course} />
     </div>
   );
 }

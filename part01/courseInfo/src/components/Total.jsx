@@ -1,7 +1,7 @@
 import React from "react";
 
-const Total = ({ content }) => {
-  let totalExercises = content.reduce((p, c) => p + c.exercises, 0);
+const Total = ({ course }) => {
+  let totalExercises = course.parts.reduce((p, c) => p + c.exercises, 0);
 
   return (
     <>
