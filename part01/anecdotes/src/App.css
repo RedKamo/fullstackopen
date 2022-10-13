@@ -1,0 +1,66 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+.app {
+  border: 1px solid red;
+}
+
+.anecdotes {
+  background-color: #333533;
+  border: 2px solid #202020;
+  border-radius: 10px;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.counter {
+  margin-top: -0.4em;
+  display: flex;
+  margin-bottom: 0;
+  color: #1c1c1c;
+  justify-content: center;
+  align-items: center;
+  float: right;
+  vertical-align: top;
+  width: 32px;
+  height: 32px;
+  background-color: #ffd100;
+  border-radius: 10px;
+  outline: 2px solid #1c1c1c;
+}
+
+.anecdotes p {
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  margin: 2em;
+}
+
+.anecdotes button {
+  margin-bottom: 2em;
+}
+
+.randomButton {
+  margin: 4em 0;
+  background-color: #202020;
+  outline: 2px solid #333533;
+}
+
+.randomButton:hover {
+  background-color: #333533;
+  outline: 2px solid #f35b04;
+}
+
+.winner {
+  background-color: #fdc500;
+  outline: 2px solid #272727;
+  color: #272727;
+  font-weight: bold;
+  max-width: 500px;
+  padding: 2em;
+  border-radius: 10px;
+}
