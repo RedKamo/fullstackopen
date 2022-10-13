@@ -3,3 +3,101 @@
   margin: 0 auto;
   padding: 2rem;
 }
+
+.App {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  gap: 4em;
+  padding: 2em;
+}
+
+.course {
+  outline: 1px solid #6c71b6;
+  background: #3e4372;
+  padding: 1em;
+  border-radius: 10px;
+  margin-bottom: 2em;
+}
+
+.course h3 {
+  color: #b3d0ff;
+}
+
+.course span {
+  color: #00ff7f;
+}
+
+.course__total {
+  color: #ffdf82;
+  font-weight: bold;
+}
+
+.courses h1 {
+  color: #00caea;
+}
+.courses {
+  width: 100%;
+  color: #eeedff;
+}
+
+.note {
+  color: #e86599;
+  padding: 0.4em 0;
+}
+form {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  gap: 0.5em;
+  height: 40px;
+}
+
+form input {
+  border: 1px solid #798897;
+  border-radius: 10px;
+  width: 70%;
+  height: 32px;
+}
+
+form button {
+  height: 32px;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 30%;
+}
+
+.notes {
+  width: 100%;
+}
+.notes h1 {
+  color: #ff7474;
+}
+
+.notes h3 {
+  color: #c6f8ff;
+}
+
+.notes button {
+  margin: 2em 0;
+}
+
+.note__important {
+  color: #00bb7b;
+}
+
+@media (min-width: 740px) {
+  .App {
+    flex-direction: row;
+  }
+  form button {
+    height: 32px;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 30%;
+  }
+}

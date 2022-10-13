@@ -1,7 +1,7 @@
-const Note = ({ content }) => {
+const Note = ({ content, important }) => {
   return (
-    <main>
-      <li>{content}</li>
+    <main className="note">
+      <li className={important ? "note__important" : ""}>{content}</li>
     </main>
   );
 };

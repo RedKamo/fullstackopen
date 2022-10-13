@@ -1,9 +1,33 @@
-import { useState } from "react";
-//import Notes from "./components/Note";
-import Course from "./components/Course";
 import "./App.css";
+import { useState } from "react";
+import Courses from "./components/Courses";
+import Notes from "./components/Notes";
 
 const App = () => {
+  const [notes, setNotes] = useState([]);
+  const [newNote, setNewNote] = useState("");
+  const [showAll, setShowAll] = useState(true);
+
+  const notesToShow = showAll
+    ? notes
+    : notes.filter((note) => note.important === true);
+
+  const addNote = (event) => {
+    event.preventDefault();
+    const noteObject = {
+      content: newNote,
+      date: new Date().toISOString(),
+      important: Math.random() < 0.5,
+      id: notes.length + 1,
+    };
+    setNotes(notes.concat(noteObject));
+    setNewNote("");
+  };
+
+  const handleChange = (event) => {
+    setNewNote(event.target.value);
+  };
+
   const course = [
     {
       name: "Half Stack application development",
@@ -49,36 +73,19 @@ const App = () => {
     },
   ];
 
-  /* const notes = [
-    {
-      id: 1,
-      content: "HTML is easy",
-      date: "2019-05-30T17:30:31.098Z",
-      important: true,
-    },
-    {
-      id: 2,
-      content: "Browser can execute only JavaScript",
-      date: "2019-05-30T18:39:34.091Z",
-      important: false,
-    },
-    {
-      id: 3,
-      content: "GET and POST are the most important methods of HTTP protocol",
-      date: "2019-05-30T19:20:14.298Z",
-      important: true,
-    },
-  ]; */
-  /*   const result = notes.map((note) => note.content);
-  console.log(result); */
-
   return (
     <div className="App">
-      <h1>Courses</h1>
-      {course.map((course, id) => (
-        <Course key={id} {...course} />
-      ))}
-
+      <Courses course={course} />
+      <Notes
+        notes={notes}
+        setNotes={setNotes}
+        addNote={addNote}
+        newNote={newNote}
+        handleChange={handleChange}
+        notesToShow={notesToShow}
+        showAll={showAll}
+        setShowAll={setShowAll}
+      />
       {/*  <ul>
         {notes.map((note, id) => (
           <Notes key={id} {...note} />

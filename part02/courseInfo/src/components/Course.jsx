@@ -6,15 +6,15 @@ const Course = ({ name, parts }) => {
   //  console.log("total", totalExercises);
 
   return (
-    <main>
-      <h2>{name}</h2>
+    <main className="course">
+      <h3>{name}</h3>
       {parts.map((part, id) => (
         <p key={id}>
           {part.name}
           <span> {part.exercises}</span>
         </p>
       ))}
-      <section>
+      <section className="course__total">
         <p>total of exercises: {totalExercises} </p>
       </section>
     </main>
