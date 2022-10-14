@@ -3,14 +3,11 @@ import "./App.css";
 import Filter from "./components/Filter";
 import PersonForm from "./components/PersonForm";
 import PersonsList from "./components/PersonsList";
+import axios from "axios";
+import { useEffect } from "react";
 
 function App() {
-  const [persons, setPersons] = useState([
-    { name: "Arto Hellas", phone: "040-123456" },
-    { name: "Ada Lovelace", phone: "39-44-5323523" },
-    { name: "Dan Abramov", phone: "12-43-234345" },
-    { name: "Mary Poppendieck", phone: "39-23-6423122" },
-  ]);
+  const [persons, setPersons] = useState([]);
 
   const [newName, setNewName] = useState("");
   const [newPhone, setNewPhone] = useState("");
@@ -36,6 +33,18 @@ function App() {
       return;
     }
   };
+
+  const getPersons = () => {
+    axios.get("http://localhost:3001/persons").then((response) => {
+      const allPersons = response.data;
+      setPersons(allPersons);
+      console.log(allPersons);
+    });
+  };
+
+  useEffect(() => {
+    getPersons();
+  }, []);
 
   const handleSearchContact = (event) => {
     setFilterSearch(event.target.value);
