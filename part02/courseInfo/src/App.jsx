@@ -2,6 +2,8 @@ import "./App.css";
 import { useState } from "react";
 import Courses from "./components/Courses";
 import Notes from "./components/Notes";
+import axios from "axios";
+import { useEffect } from "react";
 
 const App = () => {
   const [notes, setNotes] = useState([]);
@@ -72,6 +74,15 @@ const App = () => {
       ],
     },
   ];
+
+  useEffect(() => {
+    console.log("effect");
+    axios.get("http://localhost:3001/notes").then((response) => {
+      console.log("promise fulfilled");
+      setNotes(response.data);
+    });
+  }, []);
+  console.log("render", notes.length, "notes");
 
   return (
     <div className="App">
