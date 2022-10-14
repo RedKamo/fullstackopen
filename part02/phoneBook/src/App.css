@@ -1,26 +1,28 @@
 #root {
   text-align: center;
   width: 100%;
-  max-width: 978px;
-  margin: 0 auto;
-  padding: 0 1em;
+  box-sizing: border-box;
 }
 
 .App {
-  margin: 0 auto;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
-  outline: 1px solid rgb(70, 70, 70);
-  padding: 1em;
-  max-width: 478px;
+  padding: 0 1em;
   border-radius: 10px;
+  min-height: 100vh;
+}
+
+.App h1 {
+  color: #118ab2;
 }
 
 form {
   width: 100%;
-  background: rgb(43, 43, 43);
+  background: #161a1d;
+  border-radius: 0.5em;
+  max-width: 478px;
+  padding-top: 1em;
 }
 
 /* form label {
@@ -35,13 +37,85 @@ form {
   display: flex;
   align-items: center;
   text-align: left;
-  padding: 0.5em 0;
+  padding: 1em 0;
 }
 
 .form__section input {
   height: 32px;
+  border: 1px solid #33415c;
+  border-radius: 0.5em;
 }
 
-.form__button {
-  padding: 2em 0;
+.form__button button {
+  margin: 2em 0;
+  background: #0b090a;
+}
+.form__button button:hover {
+  margin: 2em 0;
+  background: #e5383b;
+}
+.contact {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 5em;
+}
+
+.contact__title {
+  padding-top: 2em;
+  color: #118ab2;
+}
+
+.contact__list {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-gap: 20px;
+  padding-top: 2em;
+  justify-items: center;
+}
+.contact__person {
+  display: flex;
+  justify-content: space-between;
+  text-align: left;
+  outline: 1px solid #33415c;
+  background: #161a1d;
+  border-radius: 10px;
+  word-wrap: break-word;
+  width: 100%;
+}
+
+.contact__person p {
+  overflow-wrap: break-word;
+  padding: 0 1em;
+}
+
+.contact__person--name {
+  color: #ef476f;
+}
+
+.contact__person--phone {
+  color: #06d6a0;
+}
+
+.filter {
+  width: 100%;
+  justify-content: center;
+  display: flex;
+  align-items: center;
+  height: 60px;
+  margin: 1em 0;
+  background-color: #161a1d;
+  max-width: 478px;
+  border-radius: 0.5em;
+}
+.filter input {
+  width: 100%;
+  height: 34px;
+  border: 1px solid #33415c;
+  border-radius: 0.5em;
+  margin: 0 1em;
+}
+.filter input::placeholder {
+  padding-left: 1em;
 }
