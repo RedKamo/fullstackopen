@@ -15,7 +15,6 @@ const App = () => {
     axios.get(API).then((res) => {
       const allCountries = res.data;
       setCountries(allCountries);
-      console.log(allCountries);
     });
   };
 
@@ -37,7 +36,15 @@ const App = () => {
     <div className="App">
       <h1>Countries Search</h1>
       <Search filterCountry={filterCountry} handleSearch={handleSearch} />
-      <CountriesList searchByCountry={searchByCountry} />
+      {searchByCountry.length >= 10 || searchByCountry.length === 0 ? (
+        <h2 className="countriesList__message">
+          There are{" "}
+          <span className="message__span">{searchByCountry.length} </span>{" "}
+          countries , So specify another filter
+        </h2>
+      ) : (
+        <CountriesList searchByCountry={searchByCountry} />
+      )}
     </div>
   );
 };

@@ -1,10 +1,88 @@
 #root {
-  max-width: 1280px;
   margin: 0 auto;
-  padding: 2rem;
+
   text-align: center;
 }
 
-.App li {
-  color: blueviolet;
+.App {
+  min-height: 100vh;
+  padding: 0 2em;
+}
+
+.App h1 {
+  padding-top: 1em;
+  margin: 0;
+}
+
+/*SEARCH COMPONENT*/
+
+.search {
+  max-width: 100%;
+  display: flex;
+  justify-content: center;
+  padding: 4em 0;
+}
+
+.search input {
+  max-width: 100%;
+  width: 350px;
+  height: 42px;
+}
+
+.search input::placeholder {
+  padding-left: 1em;
+}
+
+/*COUNTRIESLIST COMPONENT*/
+
+.countriesList {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  grid-gap: 20px;
+  justify-items: center;
+  padding: 2em 0;
+}
+
+.countriesList__message {
+  text-align: center;
+
+  bottom: 0;
+  color: #e5e5e5;
+}
+
+.message__span {
+  color: #06d6a0;
+}
+
+/*COUNTRY COMPONENT*/
+
+.country {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-items: center;
+  justify-content: space-between;
+  background: #343a40;
+  border-radius: 1em;
+}
+
+.country button {
+  margin: 1em 0;
+}
+
+.country__image {
+  height: 200px;
+  padding: 1em;
+  border-radius: 0.5em;
+}
+
+.country__image img {
+  width: 100%;
+  height: 200px;
+  border-radius: 0.5em;
+}
+
+.country__info {
+  height: 100%;
 }

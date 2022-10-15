@@ -2,9 +2,9 @@ import Country from "./Country";
 
 const CountriesList = ({ searchByCountry }) => {
   return (
-    <main>
+    <main className="countriesList">
       {searchByCountry.length >= 10 || searchByCountry.length === 0 ? (
-        <p>
+        <p className="countriesList__message">
           `There are {searchByCountry.length} countries , So specify another
           filter`
         </p>
