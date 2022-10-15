@@ -1,5 +1,4 @@
 import { useState } from "react";
-import reactLogo from "./assets/react.svg";
 import "./App.css";
 import Search from "./components/Search";
 import CountriesList from "./components/CountriesList";
@@ -16,7 +15,7 @@ const App = () => {
     axios.get(API).then((res) => {
       const allCountries = res.data;
       setCountries(allCountries);
-      console.log("nammmmmmeeee", allCountries);
+      console.log(allCountries);
     });
   };
 

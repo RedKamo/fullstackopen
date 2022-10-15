@@ -1,12 +1,18 @@
 import Country from "./Country";
 
 const CountriesList = ({ searchByCountry }) => {
-  console.log("countryList", searchByCountry);
   return (
     <main>
-      {searchByCountry.map((country) => (
-        <Country key={country.id} {...country} />
-      ))}
+      {searchByCountry.length >= 10 || searchByCountry.length === 0 ? (
+        <p>
+          `There are {searchByCountry.length} countries , So specify another
+          filter`
+        </p>
+      ) : (
+        searchByCountry.map((country, id) => (
+          <Country key={id} country={country} />
+        ))
+      )}
     </main>
   );
 };

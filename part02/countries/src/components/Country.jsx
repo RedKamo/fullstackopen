@@ -1,11 +1,20 @@
-const Country = ({ name, flags, capital }) => {
+import { useState } from "react";
+import MoreInfo from "./MoreInfo";
+
+const Country = ({ country }) => {
   // console.log("country", name);
+
+  const [moreInfo, setMoreInfo] = useState("");
+
   return (
     <main>
-      <p>
-        {name.common}, <span>{capital}</span>
-      </p>
-      <img src={flags.png} alt="" />
+      <h3>
+        {country.name.common}, <span>{country.capital}</span>
+      </h3>
+      <button onClick={() => setMoreInfo(!moreInfo)}>
+        {moreInfo ? "Hide" : "Show"}
+      </button>
+      <MoreInfo {...country} moreInfo={moreInfo} />
     </main>
   );
 };
