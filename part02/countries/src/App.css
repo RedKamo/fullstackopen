@@ -1,6 +1,5 @@
 #root {
   margin: 0 auto;
-
   text-align: center;
 }
 
@@ -85,4 +84,149 @@
 
 .country__info {
   height: 100%;
+}
+
+/*MODAL COMPONENT*/
+.modal,
+.overlay {
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  position: fixed;
+}
+
+.overlay {
+  background: rgba(13, 10, 28, 0.9);
+  width: 100%;
+}
+.modal-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  line-height: 1.4;
+  border-radius: 3px;
+  max-width: 647px;
+  min-width: 300px;
+  width: 100%;
+  outline: 1px solid #736da5;
+  background: #201a47;
+}
+
+.modal__info,
+.modal__weather {
+  display: flex;
+  justify-content: space-between;
+  gap: 1em;
+  padding: 1em;
+}
+.modal__image {
+  width: 100%;
+  height: 200px;
+}
+
+.modal__image img {
+  width: 100%;
+  height: 200px;
+}
+
+.modal__info {
+  height: 100%;
+}
+
+.modal__city {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.modal__city,
+.weather {
+  width: 100%;
+  background: #332971;
+  outline: 1px solid #5948c6;
+}
+
+.weather {
+  padding: 1em 0;
+}
+
+.weather h4 {
+  margin: 0;
+}
+
+.weather__info {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 80%;
+}
+
+.weather__image {
+  width: 50%;
+}
+
+.weather__about {
+  width: 100%;
+}
+
+.weather__about p {
+  margin: 0;
+  padding: 0.4em 0;
+  font-weight: bold;
+}
+
+.weather__about span {
+  margin: 0;
+  padding: 0.4em 0;
+  font-weight: lighter;
+}
+
+.modal__city h2 {
+  margin: 0;
+}
+
+.modal__languages {
+  width: 100%;
+  outline: 1px solid #5948c6;
+  background: #332971;
+  padding: 1em 0;
+}
+
+.modal__languages h4 {
+  margin: 0;
+}
+
+.close-modal {
+  position: absolute;
+  top: -40px;
+  right: -10px;
+  padding: 5px 7px;
+  z-index: 2;
+}
+.languages {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  justify-items: center;
+  width: 100%;
+}
+
+.languages p {
+  margin: 0;
+  padding: 0.4em 0;
+}
+
+.modal__languages--title {
+  margin: 0;
+  padding: 1em 0;
+}
+
+@media (max-width: 600px) {
+  /*  .modal__info,
+  .modal__weather {
+    flex-direction: column;
+  } */
 }

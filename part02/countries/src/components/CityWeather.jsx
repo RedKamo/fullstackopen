@@ -1,12 +1,24 @@
-const CityWeather = ({ weather }) => {
+const CityWeather = ({ weather, capital }) => {
   // console.log(weather);
   return (
-    <main>
-      <h4>Weather</h4>
-      <p>{weather.temperature}</p>
-      <img src={weather.weather_icons} />
-      <p>wind: {weather.wind_speed} </p>
-      <p>direction:</p>
+    <main className="weather">
+      <h4>Weather in {capital}:</h4>
+      <section className="weather__info">
+        <article className="weather__image">
+          <img src={weather.weather_icons} />
+        </article>
+        <article className="weather__about">
+          <p>
+            Tº : <span>{weather.temperature}</span> ºC
+          </p>
+          <p>
+            Wind: <span> {weather.wind_speed}</span> mph
+          </p>
+          <p>
+            Direction: <span>{weather.wind_dir}</span>
+          </p>
+        </article>
+      </section>
     </main>
   );
 };

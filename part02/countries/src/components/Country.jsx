@@ -1,10 +1,13 @@
 import { useState } from "react";
-import MoreInfo from "./MoreInfo";
+
+import Modal from "./Modal";
 
 const Country = ({ country }) => {
-  // console.log("country", name);
+  const [modal, setModal] = useState(false);
 
-  const [moreInfo, setMoreInfo] = useState("");
+  const toggleModal = () => {
+    setModal(!modal);
+  };
 
   return (
     <main className="country">
@@ -15,10 +18,10 @@ const Country = ({ country }) => {
         <h4>
           {country.name.common}, <span>{country.capital}</span>
         </h4>
-        <button onClick={() => setMoreInfo(!moreInfo)}>
-          {moreInfo ? "Hide" : "Show"}
+        <button onClick={toggleModal} className="btn-modal">
+          {!modal ? "More..." : "Hide"}
         </button>
-        <MoreInfo {...country} moreInfo={moreInfo} />
+        <Modal modal={modal} toggleModal={toggleModal} {...country} />
       </section>
     </main>
   );

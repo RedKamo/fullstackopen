@@ -1,6 +1,7 @@
-import axios from "axios";
-import { useEffect } from "react";
-import { useState } from "react";
+/*REFACTOR THIS COMPONENT INTO MODAL COMPONENT*/
+
+/* import axios from "axios";
+import { useState, useEffect } from "react";
 import CityWeather from "./CityWeather";
 
 const MoreInfo = ({
@@ -52,4 +53,4 @@ const MoreInfo = ({
   );
 };
 
-export default MoreInfo;
+export default MoreInfo; */
