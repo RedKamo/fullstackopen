@@ -74,15 +74,21 @@ form {
   padding-top: 2em;
   justify-items: center;
 }
-.contact__person {
+
+.contact__container {
   display: flex;
-  justify-content: space-between;
-  text-align: left;
+  flex-direction: column;
   outline: 1px solid #33415c;
   background: #161a1d;
   border-radius: 10px;
   word-wrap: break-word;
   width: 100%;
+}
+
+.contact__person {
+  display: flex;
+  justify-content: space-between;
+  text-align: left;
 }
 
 .contact__person p {
