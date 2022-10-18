@@ -7,6 +7,7 @@ const Notes = ({
   notesToShow,
   setShowAll,
   showAll,
+  toggleImportanceOf,
 }) => {
   return (
     <main className="notes">
@@ -21,7 +22,13 @@ const Notes = ({
       {notesToShow.length === 0 ? (
         <h3>...No notes yet</h3>
       ) : (
-        notesToShow.map((note, id) => <Note key={id} {...note} />)
+        notesToShow.map((note, i) => (
+          <Note
+            key={i}
+            {...note}
+            toggleImportance={() => toggleImportanceOf(note.id)}
+          />
+        ))
       )}
     </main>
   );

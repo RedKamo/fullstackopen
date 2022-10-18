@@ -1,9 +1,9 @@
 import "./App.css";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Courses from "./components/Courses";
 import Notes from "./components/Notes";
 import axios from "axios";
-import { useEffect } from "react";
+import noteService from "./services/notes";
 
 const App = () => {
   const [notes, setNotes] = useState([]);
@@ -14,20 +14,40 @@ const App = () => {
     ? notes
     : notes.filter((note) => note.important === true);
 
+  const handleChange = (event) => {
+    setNewNote(event.target.value);
+  };
+
+  const toggleImportanceOf = (id) => {
+    const note = notes.find((n) => n.id === id);
+    const changedNote = { ...note, important: !note.important };
+
+    noteService
+      .update(id, changedNote)
+      .then((returnedNote) => {
+        setNotes(notes.map((note) => (notes.id !== id ? note : returnedNote)));
+      })
+      .catch((error) => {
+        alert(`the note '${note.content}' was already deleted from the server`);
+      });
+    setNotes(notes.filter((n) => n.id !== id));
+    //console.log(`importance of ${id} needs to be toggled`);
+  };
+
   const addNote = (event) => {
     event.preventDefault();
     const noteObject = {
       content: newNote,
       date: new Date().toISOString(),
       important: Math.random() < 0.5,
-      id: notes.length + 1,
+      //id: notes.length + 1,
     };
-    setNotes(notes.concat(noteObject));
-    setNewNote("");
-  };
 
-  const handleChange = (event) => {
-    setNewNote(event.target.value);
+    noteService.create(noteObject).then((returnedNote) => {
+      setNotes(notes.concat(returnedNote));
+      setNewNote("");
+      console.log("data", returnedNote);
+    });
   };
 
   const course = [
@@ -76,13 +96,30 @@ const App = () => {
   ];
 
   useEffect(() => {
+    noteService.getAll().then((initialNotes) => {
+      setNotes(initialNotes);
+    });
+  }, []);
+
+  //create axios get request
+  /* 
+  const fetchNotes = async () => {
+    const data = axios.get("http://localhost:3001/notes");
+    console.log('data',data);
+  };
+
+  useEffect(() => {
+    fetchNotes();
+  }, []); */
+  /* 
+  useEffect(() => {
     console.log("effect");
     axios.get("http://localhost:3001/notes").then((response) => {
       console.log("promise fulfilled");
       setNotes(response.data);
     });
-  }, []);
-  console.log("render", notes.length, "notes");
+  }, []); */
+  //console.log("render", notes.length, "notes");
 
   return (
     <div className="App">
@@ -96,6 +133,7 @@ const App = () => {
         notesToShow={notesToShow}
         showAll={showAll}
         setShowAll={setShowAll}
+        toggleImportanceOf={toggleImportanceOf}
       />
       {/*  <ul>
         {notes.map((note, id) => (
