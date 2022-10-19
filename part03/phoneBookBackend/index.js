@@ -3,6 +3,7 @@ const express = require("express");
 const app = express();
 const morgan = require("morgan");
 const logger = morgan("combined");
+const cors = require("cors");
 
 let persons = [
   {
@@ -31,12 +32,12 @@ let persons = [
 
 morgan.token("body", (req) => JSON.stringify(req.body));
 
+app.use(cors());
 app.use(morgan(":method :url :body"));
-
 app.use(express.json());
-app.use(logger);
+//app.use(logger);
 
-const port = 3001;
+//const port = 3001;
 
 //IMPLEMENTING MIDDLEWARE
 /* 
@@ -103,6 +104,7 @@ app.get("/api/persons", (req, res) => {
   res.json(persons);
 });
 
-app.listen(port, () => {
-  console.log(`server runing on port ${port} `);
+const PORT = process.env.PORT || 3001;
+app.listen(PORT, () => {
+  console.log(`server runing on port ${PORT} `);
 });
