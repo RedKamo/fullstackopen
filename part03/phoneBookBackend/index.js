@@ -1,8 +1,8 @@
 //const http = require("http");
 const express = require("express");
 const app = express();
-
-app.use(express.json());
+const morgan = require("morgan");
+const logger = morgan("tiny");
 
 let persons = [
   {
@@ -27,12 +27,35 @@ let persons = [
   },
 ];
 
-/* const generateId = () => {
-  const maxId = persons.length > 0 ? Math.max(...persons.map((p) => p.id)) : 0;
-  return maxId + 1;
-}; */
+//IMPLEMENTING MIDDLEWARE WITH MORGAN
+
+morgan.token("body", (req) => JSON.stringify(req.body));
+
+app.use(morgan(":method :url :body"));
+
+app.use(express.json());
+app.use(logger);
 
 const port = 3001;
+
+//IMPLEMENTING MIDDLEWARE
+
+const requestLogger = (req, res, next) => {
+  console.log("Method", req.method);
+  console.log("Path", req.path);
+  console.log("Body", req.body);
+  console.log("---");
+  next();
+};
+
+app.use(requestLogger);
+
+app.get("/info", (request, response) => {
+  const requestTime = new Date(Date.now());
+  response.send(
+    `<h4>PhoneBook has info for ${persons.length} people </h4> <p>${requestTime}</p>`
+  );
+});
 
 //ADD NEW PERSON
 
@@ -62,7 +85,7 @@ app.get("/api/persons/:id", (req, res) => {
   person ? res.json(person) : res.status(404).end();
 });
 
-//CREATE ROUTE FOR DELETE ONE NOTE
+//CREATE ROUTE FOR DELETE ONE PERSON
 app.delete("/api/persons/:id", (req, res) => {
   const id = Number(req.params.id);
   persons = persons.filter((person) => person.id !== id);
@@ -70,12 +93,11 @@ app.delete("/api/persons/:id", (req, res) => {
   res.status(204).end();
 });
 
-app.get("/info", (request, response) => {
-  const requestTime = new Date(Date.now());
-  response.send(
-    `<h4>PhoneBook has info for ${persons.length} people </h4> <p>${requestTime}</p>`
-  );
-});
+/* const unknowEndpoint = (req, res) => {
+  res.status(404).send({ error: "unknow Endpoint" });
+};
+
+app.use(unknowEndpoint); */
 
 app.get("/api/persons", (req, res) => {
   res.json(persons);
@@ -84,14 +106,3 @@ app.get("/api/persons", (req, res) => {
 app.listen(port, () => {
   console.log(`server runing on port ${port} `);
 });
-
-/* const server = http.createServer((req, res) => {
-  res.statusCode = 200;
-  res.setHeader("Content-Type", "text/plain");
-  res.end(JSON.stringify(notes));
-});
-
-server.listen(port, () => {
-  console.log(`server runing on port ${port}`);
-});
- */
