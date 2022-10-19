@@ -2,7 +2,7 @@
 const express = require("express");
 const app = express();
 const morgan = require("morgan");
-const logger = morgan("tiny");
+const logger = morgan("combined");
 
 let persons = [
   {
@@ -39,7 +39,7 @@ app.use(logger);
 const port = 3001;
 
 //IMPLEMENTING MIDDLEWARE
-
+/* 
 const requestLogger = (req, res, next) => {
   console.log("Method", req.method);
   console.log("Path", req.path);
@@ -48,7 +48,7 @@ const requestLogger = (req, res, next) => {
   next();
 };
 
-app.use(requestLogger);
+app.use(requestLogger); */
 
 app.get("/info", (request, response) => {
   const requestTime = new Date(Date.now());
