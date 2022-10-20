@@ -2,8 +2,10 @@
 const express = require("express");
 const app = express();
 const morgan = require("morgan");
-const logger = morgan("combined");
+//const logger = morgan("combined");
 const cors = require("cors");
+
+const PORT = process.env.PORT || 3001;
 
 let persons = [
   {
@@ -32,25 +34,12 @@ let persons = [
 
 morgan.token("body", (req) => JSON.stringify(req.body));
 
-app.use(cors());
 app.use(express.static("dist"));
+app.use(cors());
+
 app.use(morgan(":method :url :body"));
 app.use(express.json());
 //app.use(logger);
-
-//const port = 3001;
-
-//IMPLEMENTING MIDDLEWARE
-/* 
-const requestLogger = (req, res, next) => {
-  console.log("Method", req.method);
-  console.log("Path", req.path);
-  console.log("Body", req.body);
-  console.log("---");
-  next();
-};
-
-app.use(requestLogger); */
 
 app.get("/info", (request, response) => {
   const requestTime = new Date(Date.now());
@@ -95,17 +84,12 @@ app.delete("/api/persons/:id", (req, res) => {
   res.status(204).end();
 });
 
-/* const unknowEndpoint = (req, res) => {
-  res.status(404).send({ error: "unknow Endpoint" });
-};
-
-app.use(unknowEndpoint); */
-
 app.get("/api/persons", (req, res) => {
   res.json(persons);
 });
 
-const PORT = process.env.PORT || 3001;
 app.listen(PORT, () => {
   console.log(`server runing on port ${PORT} `);
 });
+
+module.exports = app;
