@@ -28,6 +28,11 @@ let persons = [
     name: "Mary Helle",
     phone: "39-23-1233422",
   },
+  {
+    id: 4,
+    name: "Cam Suarez",
+    phone: "555555-1233422",
+  },
 ];
 
 //IMPLEMENTING MIDDLEWARE WITH MORGAN
