@@ -1,8 +1,7 @@
 import axios from "axios";
-//const baseUrl = "http://localhost:3001/persons";
-//add new base url part03 backend
-const baseUrl = "http://localhost:3001/api/persons";
 //const baseUrl = "http://localhost:3001/api/persons";
+//add new base url part03 backend
+const baseUrl = "/api/persons";
 
 const getContacts = async () => {
   const request = axios.get(baseUrl);
