@@ -1,7 +1,7 @@
 import axios from "axios";
 //const baseUrl = "http://localhost:3001/api/persons";
 //add new base url part03 backend
-const baseUrl = "/api/persons";
+const baseUrl = "https://fullstackopen-x8cj.vercel.app/api/persons";
 
 const getContacts = async () => {
   const request = axios.get(baseUrl);
