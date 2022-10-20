@@ -5,7 +5,7 @@ export default defineConfig({
   server: {
     port: 3001,
     proxy: {
-      "/api/persons": "http://localhost:3001",
+      "/api/persons": "https://fullstackopen-x8cj.vercel.app/api/persons",
       rewrite: (path) => path.replace(/^\/app/, ""),
     },
   },
