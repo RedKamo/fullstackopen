@@ -75,7 +75,7 @@ app.get("/info", (req, res) => {
 });
 
 //ADD NEW PERSON
-app.post("/api/persons", (req, res) => {
+app.post("/api/persons", (req, res, next) => {
   const body = req.body;
 
   const contact = new Person({
