@@ -110,14 +110,14 @@ app.put("/api/persons/:id", (req, res, next) => {
 //CREATE ROUTE FOR DELETE ONE PERSON
 app.delete("/api/persons/:id", (req, res, next) => {
   Person.findOneAndDelete({ id: req.params.id })
-    .then((res) => {
+    .then((result) => {
       res.status(204).end();
     })
     .catch((error) => next(error));
 });
 
 const unknowEndpoint = (req, res) => {
-  res.status(404).send({ error: "unknow Port" });
+  res.status(404).send({ error: "unknow Endpoint" });
 };
 
 app.use(unknowEndpoint);
@@ -127,6 +127,8 @@ const errorHandler = (error, req, res, next) => {
 
   if (error.name === "CastError") {
     return res.status(404).sedn({ error: "bad id" });
+  } else if (error.name === "ValidationError") {
+    return res.status(400).json({ error: error.message });
   }
   next(error);
 };
