@@ -116,11 +116,11 @@ app.delete("/api/persons/:id", (req, res, next) => {
     .catch((error) => next(error));
 });
 
-const unknowPort = (req, res) => {
+const unknowEndpoint = (req, res) => {
   res.status(404).send({ error: "unknow Port" });
 };
 
-app.use(unknowPort);
+app.use(unknowEndpoint);
 
 const errorHandler = (error, req, res, next) => {
   console.log(error.message);
