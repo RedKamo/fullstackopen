@@ -6,7 +6,7 @@ POST http://localhost:3001/api/blogs
 content-type: application/json
 
 {
-    "title": "second test",
-    "author": "andres",
-    "url": "https://example.com/blogposts/blogid"
+    "title": "awesome title 2",
+    "author": "redkamo",
+    "url": "https://urltesting.com"
 }
