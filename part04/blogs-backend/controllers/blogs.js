@@ -12,14 +12,10 @@ const User = require('../models/user')
 
     blogsRouter.post ('/', async(request, response, next)=> {
         const body = request.body
-
-        if (!mongoose.Types.ObjectId.isValid(body.user)) {
-            return response.status(404).end()
-          }
     
-        const decodedToken = jwt.verify(request.token, process.env.SECRET)
-
-        const user =  await  User.findById(decodedToken.id)
+        //const decodedToken = jwt.verify(request.token, process.env.SECRET)
+        //const user =  await  User.findById(decodedToken.id)
+        const user = request.user
 
         if(!user){
             return response.status(404).end()
@@ -56,9 +52,11 @@ blogsRouter.get("/:id", (request, response, next)=> {
 //async function delete one blog REFACTOR
 blogsRouter.delete('/:id', async(request,response)=> {
     const blog = await Blog.findById(request.params.id)
-    const decodedToken = jwt.verify(request.token, process.env.SECRET)
-
-    const user = await User.findById(decodedToken.id)
+    //const decodedToken = jwt.verify(request.token, process.env.SECRET)
+    if (!blog) {
+        return response.status(204).end()
+      }
+    const user = request.user
 
     if(user.id.toString()=== blog.user.toString()){
         await Blog.findByIdAndRemove(request.params.id)
